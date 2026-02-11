@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 3, 2, 19;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@layer base {
+  body {
+    @apply text-foreground bg-background;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-8 py-3 rounded-full font-medium transition-all hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-8 py-3 rounded-full font-medium transition-all hover:scale-105 active:scale-95 shadow-lg shadow-secondary/20;
+  }
+
+  .nav-link {
+    @apply text-muted-foreground hover:text-primary transition-colors font-medium;
+  }
+}
+
+@layer utilities {
+  .glass-morphic {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 shadow-xl;
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+}
+
+@keyframes orb-float {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, -30px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-orb-float {
+  animation: orb-float 15s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: float 8s infinite ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 70% 20%, rgba(139, 92, 246, 0.03), transparent),
+    radial-gradient(circle at 30% 80%, rgba(99, 102, 241, 0.03), transparent);
+}
